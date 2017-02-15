@@ -1,0 +1,158 @@
+
+body {
+	padding: 2% 5%;
+	font-family: Verdana;
+	font-size: .8em;
+}
+#home #wingit-header img {
+	float: left;
+	width: 150px;
+}
+#home #wingit-header h1 {
+	font-family: Courier;
+	font-size: 3em;
+	margin-bottom: 0px;
+}
+#home #signin-nav {
+	display: inline-block;
+	float: right;
+}
+#home #nav {
+	text-align: right;
+}
+#home #nav a {
+	font-size: .8em;
+	text-decoration: none;
+	color: gray;
+	padding: 0% 4%;
+	border-right: solid black thin;
+}
+
+#home #selectproblem {
+	background-color: rgba(197, 224, 221, .1);
+	padding: 15px;
+	border-radius: 10px;
+	margin-bottom: 2%;
+}
+
+#home #problem-generator {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#home #topic {
+	display: inline-block;
+	padding-left: 10%;
+}
+#home #problem {
+	display: inline-block;
+	padding-left: 10%;
+}
+#home #directions {
+	display: inline-block;
+	padding-left: 10%;
+}
+
+#home #second-line {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+#home #problem-display {
+	margin-top: 2%;
+	padding: 2% 3%;
+	width: 60%;
+	font-style: italic;
+}
+#home #problem-display #problem {
+	padding-left: 25%;
+}
+#home #problem-display #red {
+	font-size: .85em;
+	color: rgb(175, 84, 82);
+	text-shadow: .15px .15px 0px black;
+	padding-left: 50%;
+	text-align: center;
+	margin: 3px;
+	font-style: bold italic;
+}
+
+#home button {
+	margin-left: 65%;
+	margin-bottom: 2%;
+	padding: 10px;
+	background-color: rgba(128, 173, 124, .1);
+	border-radius: 3px;
+	border: rgba(128, 173, 124, .5) solid thin;
+}
+#home button:hover {
+	background-color: rgba(128, 173, 124, .8);
+}
+#home #common-wrong {
+	margin-top: 4%;
+	padding:3% 3%;
+	background-color: rgba(219, 135, 135, .1);
+	border: rgba(219, 135, 135, .5) solid thin;
+	border-radius: 7px;
+	width:	30%;
+	font-size: .8em;
+	float: right;
+	text-align: center;
+}
+#home footer {
+	margin-top: 100px;
+	color: #4c4c4c;
+}
+#home #common-wrong:hover {
+	background-color: rgba(219, 135, 135, .6)
+}
+
+
+#sign_in #login {
+	background-color: rgba(197, 224, 221, .5);
+	margin: 3%;
+	padding: 10%;
+	text-align: left;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+}
+#sign_in .entry-field {
+	position: absolute;
+	left: 45%;
+	height: 15px;
+	width: 170px;
+	border: none;
+}
+#sign_in button {
+	float: right;
+}
+#create-account #create-form {
+	background-color: rgba(197, 224, 221, .5);
+	margin: 10%;
+	padding: 10%;
+	width: 350px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#create-account .entry-field {
+	position: absolute;
+	height: 13px;
+	width: 150px;
+	left: 46%;
+}
+
+#create-account #username {
+	font-size: .8em;
+	font-style: italic;
+}
+#create-account button {
+	float: right;
+}
+
+
+
+
+
+
+
+

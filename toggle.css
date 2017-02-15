@@ -1,0 +1,96 @@
+/***************************/
+/* Toggle switch */
+#home .switch {
+	position: relative;
+	display: block;
+	vertical-align: top;
+	width: 130px;
+	height: 40px;
+	padding: 3px;
+	margin: 0 10px 10px 0;
+	border-radius: 3px;
+	cursor: pointer;
+	box-sizing:content-box;
+}
+#home .switch-input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	box-sizing:content-box;
+}
+/*background when toggle is switched to "generator"*/
+#home .switch-label {
+	position: relative;
+	display: block;
+	height: inherit;
+	font-size: 10px;
+	text-transform: uppercase;
+	background: #fbfcc9;
+	border-radius: inherit;
+	box-shadow: 0px 0px 2px gray;
+	box-sizing:content-box;
+}
+#home .switch-label:before, .switch-label:after {
+	position: absolute;
+	top: 50%;
+	margin-top: -.5em;
+	line-height: 1;
+	-webkit-transition: inherit;
+	transition: inherit;
+	box-sizing:content-box;
+}
+/*font of "generator"*/
+#home .switch-label:before {
+	font-size: 1.07em;
+	content: attr(data-off);
+	right: 11px;
+	color: black;
+	text-shadow: 0px .01px rgba(71, 71, 71, 1);
+}
+/* font of "solver"*/
+#home .switch-label:after {
+	font-size: 1.07em;
+	content: attr(data-on);
+	left: 11px;
+	color: black;
+	text-shadow: 0px .2px rgba(255, 255, 255, 0.3);
+	opacity: 0;
+}
+/* background when toggle is switched to solver*/
+#home .switch-input:checked ~ .switch-label {
+	background: #b3d2e5;
+	/* rgb(88, 140, 78) green color*/
+	box-shadow: .1px .1px 1px black;
+}
+/* Dims out the word generator */
+#home .switch-input:checked ~ .switch-label:before {
+	opacity: 0;
+}
+#home .switch-input:checked ~ .switch-label:after {
+	opacity: 1;
+}
+#home .switch-handle {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 42px;
+	height: 36px;
+	border-radius: 3px;
+	box-shadow: .1px .1px 3px black;
+	background-color:rgba(249, 250, 252, .8);
+	border: thin solid rgba(76, 76, 76, .3);
+}
+
+#home .switch-input:checked ~ .switch-handle {
+	left: 88px;
+}
+ 
+/* Transition
+========================== */
+#home .switch-label, .switch-handle {
+	transition: All 0.3s ease;
+	-webkit-transition: All 0.3s ease;
+	-moz-transition: All 0.3s ease;
+	-o-transition: All 0.3s ease;
+}
