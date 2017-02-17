@@ -149,9 +149,27 @@ body {
 	float: right;
 }
 
+#my_wing_its {
+	padding: 2% 5%;
+	font-family: Verdana;
+	font-size: .8em;	
+}
 
+#my_wing_its .signed_in_header li {
+	display: inline-block;
+	float: right;
+	margin-left: 7%;
+}
 
-
+#my_wing_its .signed_in_header img {
+	width: 150px;
+	float: left;
+}
+#my_wing_its .signed_in_header h1 {
+	font-family: Courier;
+	font-size: 3em;
+	margin-bottom: 0px;
+}
 
 
 
