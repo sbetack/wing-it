@@ -126,9 +126,24 @@ body {
 #sign_in button {
 	float: right;
 }
+#sign_in footer {
+	position: absolute;
+	bottom: 4%;
+	right: 4%;
+	font-size: .8em;	
+}
+#sign_in footer #wing_it {
+	font-family: courier;
+	letter-spacing: .05px;
+	font-size: 1.2em;
+}
+#sign_in footer #math_italic{
+	font-style: italic;
+	font-weight: bold;
+}
 #create-account #create-form {
 	background-color: rgba(197, 224, 221, .5);
-	margin: 10%;
+	margin: 10% 10% 2%;
 	padding: 10%;
 	width: 350px;
 	margin-right: auto;
@@ -148,9 +163,22 @@ body {
 #create-account button {
 	float: right;
 }
-
+#create-account footer {
+	position: absolute;
+	bottom: 4%;
+	right: 4%;
+	font-size: .8em;	
+}
+#create-account footer #wing_it {
+	font-family: courier;
+	letter-spacing: .05px;
+	font-size: 1.2em;
+}
+#create-account footer #math_italic{
+	font-style: italic;
+	font-weight: bold;
+}
 #my_wing_its {
-	padding: 2% 5%;
 	font-family: Verdana;
 	font-size: .8em;	
 }
@@ -159,18 +187,24 @@ body {
 	display: inline-block;
 	float: right;
 	margin-left: 7%;
+	font-size: .75em;
+	color: gray;
 }
 
 #my_wing_its .signed_in_header img {
-	width: 150px;
+	width: 100px;
 	float: left;
 }
 #my_wing_its .signed_in_header h1 {
 	font-family: Courier;
-	font-size: 3em;
+	font-size: 2em;
 	margin-bottom: 0px;
 }
 
+#my_wing_its .signed_in_header a {
+	text-decoration: none;
+	color: black;
+}
 
 
 
