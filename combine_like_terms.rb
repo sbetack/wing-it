@@ -32,25 +32,24 @@ sort the hash by keys into an array
 	
 =end
 def combine_like_terms(expression)
-	sorted_terms = sort_by_variables(expression)
-	combined_terms_hash = {}
-	sorted_terms.each do |term|
+	
+end
+
+
+def create_hash_coefficent_keys_and_variable_values(expression)
+	all_add = change_sub_to_add_negative(expression)
+	term_array = all_add.split("+")
+	coefficient_and_variables = {}
+	term_array.each do |term|
 		variable = get_the_variable(term)
-		coefficient = get_the_coefficient(term)
-		if !(combined_terms_hash.has_key?(variable))
-			combined_terms_hash[variable] = coefficient
-		else
-			combined_terms_hash[variable] += coefficient
-		end
+		coefficient_and_variables[term] = variable
 	end
-	combined_terms_arr = []
-	combined_terms_hash.each do |variable, coefficient|
-		combined_terms_arr.push("#{coefficient.to_s}#{variable.to_s}")
-	end
-	p combined_terms_arr.join("+") 
+	p coefficient_and_variables
 end
-def distribute(expression)
-end
+
+
+
+
 def sort_by_variables(expression)
 	all_add_expression = change_sub_to_add_negative(expression)
 	term_array = all_add_expression.split("+")
@@ -66,8 +65,9 @@ def sort_by_variables(expression)
 	sorted_terms_with_vars.each do |term_and_var_array|
 		sorted_terms.push(term_and_var_array[0])
 	end
-	sorted_terms
+	sorted_terms.join("+")
 end
+
 
 def get_the_variable(term)
 	variable = ''
@@ -77,14 +77,6 @@ def get_the_variable(term)
 		end
 	end
 	variable
-end
-
-def is_contant(term)
-	if get_the_variable(term) == ''
-		true
-	else
-		false
-	end
 end
 
 def get_the_coefficient(term)
@@ -97,40 +89,29 @@ def get_the_coefficient(term)
 	coefficient.to_i
 end
 
+
 def change_sub_to_add_negative(expression)
 	no_sub_expression = expression.chars.map.with_index do |character, index|
-		if (character != '-') && (expression[index-1] == '-') && (expression[index-2] == '-')
-			character = character
-		elsif (character != '-') && (expression[index-1] != '-')
+		if (character != '-') && (expression[index-1] != '-')
 			character = character
 		elsif character == '-'
 			character = '+'
 		elsif (expression[index-1] == '-') && (character.ord <= 122) && (character.ord >= 97)
 			character.prepend('-1')
-		elsif (expression[index-1] == '-') && (expression[index-2] != '-')
-			character = character.to_i * -1 
+		elsif expression[index-1] == '-'
+			character = character.to_i * -1
 		end
 	end
 	p no_sub_expression.join('')
 end
 
-all_add = change_sub_to_add_negative("3x+2y-6xyz+1y--8y+2x-y")
+all_add = change_sub_to_add_negative("3x+2y-8xyz+1y-8y+2x-y")
 # p all_add.split("+")
 
-# p get_the_variable("563")
-# p get_the_coefficient("-563")
-# p sort_by_variables("3x+2y-8xyz+1z-8y+26x-y")
-# p combine_like_terms("3x+2y-8xyz+1z-8y+26x-y")
+# p get_the_variable("563xyz")
+p get_the_coefficient("-563")
+p sort_by_variables("3x+2y-8xyz+1z-8y+26x-y")
+
 # create_hash_coefficent_keys_and_variable_values("3x+2y-8xyz+1y-8y+2x-y")
-# && expression[index-2] != '-'
-
-
-# if it's a number 
-# 	character = character
-# elsif it's a - change it to
-
-
-
-
 
 
