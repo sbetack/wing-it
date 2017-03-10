@@ -69,38 +69,40 @@ def sort_by_variables(expression)
 end
 
 def get_the_variable(term)
-	variable = ''
-	term.chars.each do |character|
-		if (character.ord <= 122) && (character.ord >= 97)
-			variable += character
+	term.chars.each.with_index do |character, index|
+		if is_letter(character)
+			return term[index..-1]
 		end
 	end
-	variable
+	return ''
 end
 
-def is_contant(term)
-	if get_the_variable(term) == ''
-		true
-	else
-		false
-	end
+def is_constant(term)
+	get_the_variable(term) == ''
 end
 
 def get_the_coefficient(term)
-	coefficient = ''
-	term.chars.each do |character|
-		if !((character.ord <= 122) && (character.ord >= 97))
-			coefficient += character
+	if is_letter(term[0])
+		return 1
+	elsif is_contant(term)
+		return term.to_i
+	end
+	term.chars.each.with_index do |character, index|
+		if is_letter(character)
+			return term[0...index].to_i
 		end
 	end
-	coefficient.to_i
+end
+
+def is_letter(character)
+	(character.ord <= 122) && (character.ord >= 97)
 end
 
 def change_sub_to_add_negative(expression)
 	no_sub_expression = expression.chars.map.with_index do |character, index|
 		if character == '-'
 			character = '+'
-		elsif (expression[index-1] == '-') && (character.ord <= 122) && (character.ord >= 97)
+		elsif (expression[index-1] == '-') && is_letter(character)
 			character.prepend('-1')
 		elsif (expression[index-1] == '-') && (expression[index-2] != '-')
 			character = character.to_i * -1 
@@ -113,11 +115,11 @@ end
 
 all_add = change_sub_to_add_negative("3x+2y-6xyz+1y--8y+2x-y")
 # p all_add.split("+")
-
-# p get_the_variable("563")
-# p get_the_coefficient("-563")
+# p is_constant('8y^2')
+# p get_the_variable("563x^2yz")
+p get_the_coefficient("xy")
 # p sort_by_variables("3x+2y-8xyz+1z-8y+26x-y")
-p add_and_sub_like_terms("3x+2y-8xyz+1z-8y+26x-y")
+# p add_and_sub_like_terms("3x+2y-8xyz+1z-8y+26x-y")
 # create_hash_coefficent_keys_and_variable_values("3x+2y-8xyz+1y-8y+2x-y")
 # && expression[index-2] != '-'
 
