@@ -31,7 +31,7 @@ sort the hash by keys into an array
 
 	
 =end
-def combine_like_terms(expression)
+def add_and_sub_like_terms(expression)
 	sorted_terms = sort_by_variables(expression)
 	combined_terms_hash = {}
 	sorted_terms.each do |term|
@@ -49,8 +49,7 @@ def combine_like_terms(expression)
 	end
 	p combined_terms_arr.join("+") 
 end
-def distribute(expression)
-end
+
 def sort_by_variables(expression)
 	all_add_expression = change_sub_to_add_negative(expression)
 	term_array = all_add_expression.split("+")
@@ -99,16 +98,14 @@ end
 
 def change_sub_to_add_negative(expression)
 	no_sub_expression = expression.chars.map.with_index do |character, index|
-		if (character != '-') && (expression[index-1] == '-') && (expression[index-2] == '-')
-			character = character
-		elsif (character != '-') && (expression[index-1] != '-')
-			character = character
-		elsif character == '-'
+		if character == '-'
 			character = '+'
 		elsif (expression[index-1] == '-') && (character.ord <= 122) && (character.ord >= 97)
 			character.prepend('-1')
 		elsif (expression[index-1] == '-') && (expression[index-2] != '-')
 			character = character.to_i * -1 
+		else
+			character = character
 		end
 	end
 	p no_sub_expression.join('')
@@ -120,7 +117,7 @@ all_add = change_sub_to_add_negative("3x+2y-6xyz+1y--8y+2x-y")
 # p get_the_variable("563")
 # p get_the_coefficient("-563")
 # p sort_by_variables("3x+2y-8xyz+1z-8y+26x-y")
-# p combine_like_terms("3x+2y-8xyz+1z-8y+26x-y")
+p add_and_sub_like_terms("3x+2y-8xyz+1z-8y+26x-y")
 # create_hash_coefficent_keys_and_variable_values("3x+2y-8xyz+1y-8y+2x-y")
 # && expression[index-2] != '-'
 
@@ -129,8 +126,13 @@ all_add = change_sub_to_add_negative("3x+2y-6xyz+1y--8y+2x-y")
 # 	character = character
 # elsif it's a - change it to
 
+# def distribute(expression)
+# 	starting_paren = expression.index('(')
+# 	ending_paren = expression.index(')')
+# 	p expression[(starting_paren + 1)..(ending_paren - 1)]
 
 
 
 
+# distribute("3(3x+7y+10x+2)")
 
