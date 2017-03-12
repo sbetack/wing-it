@@ -6,7 +6,13 @@ slice between parens
 split on the plus
 multiple all inner terms by the outer term
 =end
+require_relative 'add_sub_like_terms'
+require_relative 'multiply'
 
-def multiply_terms 
-  
-end
+
+
+#returns [[term_to_distribute, inner_expression], ]
+
+
+
+

@@ -47,7 +47,7 @@ def add_and_sub_like_terms(expression)
 	combined_terms_hash.each do |variable, coefficient|
 		combined_terms_arr.push("#{coefficient.to_s}#{variable.to_s}")
 	end
-	p combined_terms_arr.join("+") 
+	combined_terms_arr.join("+") 
 end
 
 def sort_by_variables(expression)
@@ -63,7 +63,9 @@ def sort_by_variables(expression)
 	sorted_terms_with_vars = unsorted_terms_with_vars.sort_by { |a2| a2[1] }
 	sorted_terms = []
 	sorted_terms_with_vars.each do |term_and_var_array|
-		sorted_terms.push(term_and_var_array[0])
+		if term_and_var_array != ["", ""]
+			sorted_terms.push(term_and_var_array[0])
+		end
 	end
 	sorted_terms
 end
@@ -84,7 +86,7 @@ end
 def get_the_coefficient(term)
 	if is_letter(term[0])
 		return 1
-	elsif is_contant(term)
+	elsif is_constant(term)
 		return term.to_i
 	end
 	term.chars.each.with_index do |character, index|
@@ -110,16 +112,16 @@ def change_sub_to_add_negative(expression)
 			character = character
 		end
 	end
-	p no_sub_expression.join('')
+	no_sub_expression.join('')
 end
 
-all_add = change_sub_to_add_negative("3x+2y-6xyz+1y--8y+2x-y")
-# p all_add.split("+")
-# p is_constant('8y^2')
-# p get_the_variable("563x^2yz")
-p get_the_coefficient("xy")
+# all_add = change_sub_to_add_negative("3x+2y-6xyz+1y--8y+2x-y")
+# # p all_add.split("+")
+# # p is_constant('8y^2')
+# # p get_the_variable("563x^2yz")
+# p get_the_coefficient("xy")
 # p sort_by_variables("3x+2y-8xyz+1z-8y+26x-y")
-# p add_and_sub_like_terms("3x+2y-8xyz+1z-8y+26x-y")
+p add_and_sub_like_terms("-3z-6x+7y+18xy")
 # create_hash_coefficent_keys_and_variable_values("3x+2y-8xyz+1y-8y+2x-y")
 # && expression[index-2] != '-'
 
