@@ -1,5 +1,5 @@
 require_relative 'add_sub_like_terms'
-
+require_relative 'exponents'
 
 
 def distribute(monomial_to_distribute, inner_expression)
@@ -12,18 +12,27 @@ def distribute(monomial_to_distribute, inner_expression)
 end
 
 def needs_distribution?(expression)
-  
-end
-
-def find_parts_of_distribution(expression)
-  all_addition_expression = change_sub_to_add_neg(expression)
-  all_addition_expression.chars.each.with_index do |character, index|
-    if (character == "(") && (all_addition_expression[index-1]!= +)
-
-  if return_value == [[""""]]
-    false
+  expression.chars.each.with_index do |character, index|
+    if (character == '(') && (expression[index-1] != '+') 
+      return true
+    elsif (character == ')') && (expression[index+1] != '+')
+      return true 
+    else
+      return false 
+    end
   end
+
 end
+
+# def find_parts_of_distribution(expression)
+#   all_addition_expression = change_sub_to_add_neg(expression)
+#   all_addition_expression.chars.each.with_index do |character, index|
+#     if (character == "(") && (all_addition_expression[index-1]!= +)
+
+#   if return_value == [[""""]]
+#     false
+#   end
+# end
 
 
 def multiply_two_monomials(monomial_1, monomial_2)
@@ -81,12 +90,37 @@ def separate_variables_with_corresponding_exponents(variable_expression)
 end
 
 
+#must call split_polynomials_on_add(expression) before this
+#split polys at split on the () and then again on the +
+# split polys look like this [["3x", "-2"], ["3x", "-2"], ["3x", "-2"]]
+def multiply_polynomials(split_polys)
+  new_first_paren = []
+  split_polys[0].map! do |first_paren_term|
+    new_expression = distribute(first_paren_term, split_polys[1].join('+'))
+    new_first_paren.push(new_expression)
+  end
+  split_polys.delete_at(1)
+  split_polys[0] = add_and_sub_like_terms(new_first_paren.join('+')).split('+')
+  if split_polys[1] != nil
+    multiply_polynomials(split_polys)
+  else
+    split_polys[0].reverse!
+    return split_polys.join('+')
+  end
+end
+
+split_polys = split_polynomials_on_add('5x+7(x-2)+(3x-2)^7+3x-7(2x+2)')
+p multiply_polynomials(split_polys)
 # p multiply_two_variable_expressions('a^7x^3yz', 'xyz^2')
 
 # p separate_variables_with_corresponding_exponents('585x^2yz^7ab^3cd')
 
-p multiply_two_monomials('4','-6')
-p distribute('3x','-3z-6x+7y+18xy')
+# p multiply_two_monomials('4','-6')
+# p distribute('3x','-3z-6x+7y+18xy')
+
+
+
+
 
 
 
