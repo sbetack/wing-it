@@ -53,7 +53,7 @@ end
 
 p find_inner_expression('2+(3x((2x(3x+2x+5-6x)+1)-4x))+8x')
 p "************"
-p combine_like_terms_in_inner_expression('2+(3x((2x(3x+2x+5-6x)+1)-4x))+8x')
+p combine_like_terms_in_inner_expression('2+(3x((2x(3x+2x+5-6x)+1)-4x))+8x+(3x-1)(2x+6)(x-1)')
 # p replace_inner_expression('2+(3x((2x(3x+2x+5-6x)+1)-4x))+8x')
 # p "look below"
 # p find_index_of_innermost_paren('2+(3x((2x(3x+2x+5-6x)+1)-4x))+8x')
